@@ -103,6 +103,11 @@ class DnbUrnProvider(PIDProvider):
         # Delegate to client
         return self.client.generate_urn(record)
 
+    @classmethod
+    def is_enabled(cls, app):
+        """Determine if dnb provider is enabled or not."""
+        return True
+
     def can_modify(self, pid, **kwargs):
         """Checks if the PID can be modified."""
         return not pid.is_registered() and not pid.is_reserved()
